@@ -1,7 +1,12 @@
 aid: endeavor-group-holdings
-url: https://raw.githubusercontent.com/api-evangelist/endeavor-group-holdings/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/endeavor-group-holdings/refs/heads/main/apis.yml
 modified: '2026-03-24'
 apis: []
 common:
   - type: Website
     url: https://www.endeavor-group-holdings.com
+description: >-
+  Endeavor Group Holdings is a global sports and entertainment company that represents
+  talent, owns and operates events, and provides licensing, marketing, and media services
+  through subsidiaries including WME, IMG, and UFC.

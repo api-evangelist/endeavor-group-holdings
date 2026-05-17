@@ -9,7 +9,7 @@ description: >-
   representation, media, marketing, and licensing businesses were rebranded as
   WME Group, which now operates WME, 160over90, Pantheon Media Group, and IMG
   Licensing. No public developer APIs are currently published.
-type: Contract
+kind: contract
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg

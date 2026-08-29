@@ -10,6 +10,17 @@ description: >-
   WME Group, which now operates WME, 160over90, Pantheon Media Group, and IMG
   Licensing. No public developer APIs are currently published.
 kind: contract
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - none
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown

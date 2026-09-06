@@ -1,0 +1,161 @@
+generated: '2026-09-06'
+method: probed
+source: live probes of /.well-known/ on every host this record knows
+summary: >-
+  Nothing is served. Six hosts were probed across the WME Group estate — the corporate site
+  (wmegrp.com + www), the legacy Endeavor domain (endeavorco.com, which 301s to wmegrp.com), and
+  the three operating-brand sites (wmeagency.com, imglicensing.com, pantheonmedia.com). Every
+  RFC-defined discovery path returned 404 on every host: no security.txt, no api-catalog, no OIDC
+  discovery, no RFC 8414 / RFC 9728 OAuth metadata, no ai-plugin.json, no A2A agent card at either
+  the current or the legacy path. This is consistent with the rest of the profile — Endeavor Group
+  Holdings (trading publicly as WME Group) operates no developer program, so there is no API host
+  for any of these documents to describe.
+pointer_basis: >-
+  NO WellKnown pointer and NO SecurityTxt pointer emitted. Every probed path 404d; this file records
+  a measured absence, not a served surface. The one agent-facing document found anywhere in the
+  estate is an llms.txt on pantheonmedia.com, which is indexed under llms/ and pointed at with
+  type LLMsTxt — it is not a /.well-known/ document and does not earn a WellKnown pointer.
+false_positive_watch: >-
+  pantheonmediagroup.com (note the trailing "group") is NOT a WME Group host. It is a GoDaddy
+  aftermarket parking page that answers HTTP 200 with a /lander redirect shell for EVERY path,
+  including /.well-known/agent-card.json, /openapi.json and /.well-known/api-catalog, and it serves
+  a GoDaddy-authored llms.txt advertising the domain for sale. WME Group's own homepage links to
+  https://www.pantheonmedia.com/ — that is the real Pantheon Media Group site. Any future round that
+  reads a 200 from pantheonmediagroup.com as a published document is wrong; the host is excluded
+  from hosts[] below for exactly that reason.
+control_probe:
+  note: >-
+    Each host was also asked for a path that cannot exist, to prove its 404s are real and not a
+    catch-all. imglicensing.com and pantheonmedia.com both returned 404 on the control path, so
+    their 404s above are genuine misses rather than a soft-200 wall.
+  probes:
+    - url: https://imglicensing.com/nonexistent-probe-9z
+      status: 404
+    - url: https://pantheonmedia.com/nonexistent-9z
+      status: 404
+    - url: https://pantheonmediagroup.com/this-path-does-not-exist-12345
+      status: 200
+      note: parked-domain catch-all — this is why that host is excluded
+hosts:
+  - host: https://wmegrp.com
+    role: corporate site (apis.yml Website)
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://www.wmegrp.com
+    role: corporate site (www)
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://endeavorco.com
+    role: legacy Endeavor corporate domain (301 to wmegrp.com)
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://wmeagency.com
+    role: WME talent agency brand site
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://imglicensing.com
+    role: IMG Licensing brand site
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://pantheonmedia.com
+    role: Pantheon Media Group brand site (publishes the estate's only llms.txt)
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+excluded_hosts:
+  - host: https://pantheonmediagroup.com
+    reason: >-
+      Not a WME Group property. GoDaddy aftermarket parking page for sale; answers 200 with a
+      /lander redirect for every path and serves a GoDaddy-authored llms.txt. Excluded so its
+      soft-200s can never be read as published documents.
+    checked: '2026-09-06'
+checked: '2026-09-06'

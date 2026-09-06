@@ -45,7 +45,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/endeavor-group-holdings/refs/heads/main/apis.yml
 created: '2026-03-24'
-modified: '2026-04-28'
+modified: '2026-09-06'
 specificationVersion: '0.23'
 apis: []
 common:
@@ -59,6 +59,54 @@ common:
     url: https://wmegrp.com/
   - type: Spinoff
     url: https://www.tkogrp.com/
+  - type: LLMsTxt
+    url: llms/endeavor-group-holdings-pantheon-media-llms.txt
+  - type: TermsOfService
+    url: https://wmegrp.com/terms-of-use/
+  - type: PrivacyPolicy
+    url: https://wmegrp.com/privacy-policy/
+  - type: Careers
+    url: https://wmeimg.wd1.myworkdayjobs.com/WMEGRP
+  - type: Twitter
+    url: https://x.com/Endeavor
+  - type: Instagram
+    url: https://www.instagram.com/endeavor/
+  - type: Subsidiary
+    url: https://www.wmeagency.com/
+  - type: Subsidiary
+    url: https://imglicensing.com/
+  - type: Subsidiary
+    url: https://www.pantheonmedia.com/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+
+x-enrichment:
+  date: '2026-09-06'
+  status: minimal
+  artifacts_added: 2
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: not-a-software-company
+  detail: >-
+    Endeavor Group Holdings is a privately held holding company whose operating businesses — the WME
+    talent agency, 160over90, IMG Licensing and Pantheon Media Group, trading collectively as WME
+    Group — sell representation, brand licensing and television production, not software; the
+    corporate site is a five-page WordPress brochure with no developer, docs or API section at any
+    path, and the two subsidiaries that ever did ship developer APIs (IMG ARENA and OpenBet) were
+    divested in 2025 to Sportradar and to OB Global Holdings respectively.
+  evidence:
+    - url: https://wmegrp.com/developers
+      status: 404
+    - url: https://wmegrp.com/openapi.json
+      status: 404
+    - url: https://wmegrp.com/.well-known/api-catalog
+      status: 404
+    - url: https://wmeagency.com/.well-known/agent-card.json
+      status: 404
+    - url: https://imglicensing.com/openapi.json
+      status: 404
+    - url: https://pantheonmedia.com/llms.txt
+      status: 200
+  checked: '2026-09-06'
